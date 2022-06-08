@@ -62,10 +62,16 @@ impl WebsocketService {
     }
 
     pub fn start(&self) {
-        self.tx.clone().try_send("{\"request\":\"start\"}".to_string()).unwrap();
+        self.tx
+            .clone()
+            .try_send("{\"request\":\"start\"}".to_string())
+            .unwrap();
     }
 
     pub fn stop(&self) {
-        self.tx.clone().try_send("{\"request\":\"stop\"}".to_string()).unwrap();
+        self.tx
+            .clone()
+            .try_send("{\"request\":\"stop\"}".to_string())
+            .unwrap();
     }
 }
