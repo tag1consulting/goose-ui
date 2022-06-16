@@ -51,7 +51,9 @@ impl WebsocketService {
                         }
                     }
                     Err(e) => {
-                        log::error!("ws: {:?}", e);
+                        log::error!("WebSocket error: {:?}", e);
+                        log::error!("Disconnecting!");
+                        event_bus.send(Request::Disconnect);
                     }
                 }
             }

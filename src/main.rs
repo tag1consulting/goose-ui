@@ -1,15 +1,7 @@
-use yew::prelude::*;
-
 mod components;
 mod services;
-use components::controls::Controls;
 
-#[function_component(Main)]
-fn main() -> Html {
-    html! {
-        <Controls />
-    }
-}
+use crate::components::main::Main;
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::default());

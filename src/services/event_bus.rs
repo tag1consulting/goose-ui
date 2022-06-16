@@ -5,6 +5,7 @@ use yew_agent::{Agent, AgentLink, Context, HandlerId};
 #[derive(Serialize, Deserialize, Debug)]
 pub enum Request {
     EventBusMsg(String),
+    Disconnect,
 }
 
 pub struct EventBus {
@@ -32,6 +33,11 @@ impl Agent for EventBus {
             Request::EventBusMsg(s) => {
                 for sub in self.subscribers.iter() {
                     self.link.respond(*sub, s.clone())
+                }
+            }
+            Request::Disconnect => {
+                for sub in self.subscribers.iter() {
+                    self.link.respond(*sub, "ws_disconnect".to_string())
                 }
             }
         }
